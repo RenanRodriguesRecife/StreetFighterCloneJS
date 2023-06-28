@@ -1,7 +1,9 @@
 const GameViewport = {
-    WIDTH: 324,
+    WIDTH: 384,
     HEIGHT: 224,
-    SCALE: 2,
+    SCALE: 10,
+    R_WIDTH: 1/4,
+    R_HEIGHT: 1/3,
 }
 
 
@@ -12,9 +14,13 @@ window.onload = function(){
     canvasEl.width = GameViewport.WIDTH;
     canvasEl.height = GameViewport.HEIGHT;
 
-    canvasEl.style.width = `${GameViewport.WIDTH * GameViewport.SCALE}px`;
-    canvasEl.style.height = `${GameViewport.HEIGHT * GameViewport.SCALE}px`;
+    canvasEl.style.width = `${GameViewport.WIDTH * GameViewport.SCALE * GameViewport.R_WIDTH}px`;
+    canvasEl.style.height = `${GameViewport.HEIGHT * GameViewport.SCALE * GameViewport.R_HEIGHT}px`;
 
-
-    console.log(context)
+    context.strokeStyle = 'black';
+    context.moveTo(0,0);
+    context.lineTo(GameViewport.WIDTH,GameViewport.HEIGHT);
+    context.moveTo(GameViewport.WIDTH,0);
+    context.lineTo(0,GameViewport.HEIGHT);
+    context.stroke();
 }
