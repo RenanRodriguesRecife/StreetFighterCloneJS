@@ -21,7 +21,14 @@ window.onload = function(){
 
     const ryu = document.querySelector('img');
 
+    const position = {
+        x: 0,
+        y: 0,
+    }
+
     function frame(){
+        position.x += 1;
+
         context.strokeStyle = 'black';
         context.moveTo(0,0);
         context.lineTo(GameViewport.WIDTH,GameViewport.HEIGHT);
@@ -29,7 +36,9 @@ window.onload = function(){
         context.lineTo(0,GameViewport.HEIGHT);
         context.stroke();
 
-        context.drawImage(ryu,0,0);
+        context.drawImage(ryu,position.x,position.y);
+
+        window.requestAnimationFrame(frame);
     }
 
     window.requestAnimationFrame(frame);
