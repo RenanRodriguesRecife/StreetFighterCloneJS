@@ -3,3 +3,7 @@
 
 https://tcrf.net/Street_Fighter_Alpha_3_(Arcade)
 https://downloads.khinsider.com/search?search=street+fighter+alpha
+
+Scanlines effect:
+https://codepen.io/dznqbit/pen/OPGoje
+
