@@ -19,21 +19,31 @@ window.onload = function(){
     canvasEl.style.width = `${GameViewport.WIDTH * GameViewport.SCALE * GameViewport.R_WIDTH}px`;
     canvasEl.style.height = `${GameViewport.HEIGHT * GameViewport.SCALE * GameViewport.R_HEIGHT}px`;
 
-    const ryu = document.querySelector('img');
+    const [ryu, background] = document.querySelectorAll('img');
 
     const position = {
         x: 0,
-        y: 0,
+        y: 110,
     }
 
-    function frame(){
-        position.x += 1;
+    let velocity = 1;
 
-        context.strokeStyle = 'black';
-        context.moveTo(0,0);
-        context.lineTo(GameViewport.WIDTH,GameViewport.HEIGHT);
-        context.moveTo(GameViewport.WIDTH,0);
-        context.lineTo(0,GameViewport.HEIGHT);
+    function frame(){
+        position.x += velocity;
+
+        if (position.x > GameViewport.WIDTH - ryu.width|| position.x < 0){
+            velocity = -velocity;
+        }
+
+        context.drawImage(background,0,0);
+
+        // context.clearRect(0,0,GameViewport.WIDTH,GameViewport.HEIGHT);
+
+        // context.strokeStyle = 'black';
+        // context.moveTo(0,0);
+        // context.lineTo(GameViewport.WIDTH,GameViewport.HEIGHT);
+        // context.moveTo(GameViewport.WIDTH,0);
+        // context.lineTo(0,GameViewport.HEIGHT);
         context.stroke();
 
         context.drawImage(ryu,position.x,position.y);
